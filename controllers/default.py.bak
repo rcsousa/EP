@@ -20,16 +20,9 @@ def ordem_de_venda():
 
 @auth.requires_login()
 def tela_vendedor():
-    from cloudant.account import Cloudant
     import os, requests, json
     db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
-    #rows = db(db.produtos.id > 0).select()
     linhas = db(db.produtos.id > 0).select()
-    cloudantDB = "easypay"
-    client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
-    client.connect()
-    db = client[cloudantDB]
-    #view = db.all_docs(descending=False, include_docs=True)
     selector = '''{"selector": {"_id": {"$gt": null},"timestamp": {"$regex": ".*"}},"fields" : ["canal","status_easypay","figura","quantidade","timestamp", "status_comprador", "status_vendedor", "image_name", "item", "valor","_id"], "sort": [{"timestamp": "desc"}]}'''
     z = requests.post("https://rcsousa.cloudant.com/easypay/_find", data=selector)
     result = json.loads(z.text)
@@ -45,8 +38,6 @@ def tela_vendedor():
         figura.append(x.figura)
     for doc in result['docs']:
         docs.append(doc)
-    client.disconnect()
-    #return dict(docs=docs, produto=produto, preco=preco)
     return dict(docs=docs, produto=zip(_id, produto, preco,figura), user=auth.user)
 
 @auth.requires_login()

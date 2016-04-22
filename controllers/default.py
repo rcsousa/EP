@@ -1,22 +1,11 @@
 #from bottle import request, run, post, tob, route
 #from io import BytesIO
 
-#@route('/qrcode', method='POST')
+
 def qrcode():
     response.flash = T("Welcome to web2py!")
     return dict(message=T('Hello World'))
 
-def ordem_de_venda():
-    from cloudant.account import Cloudant
-    cloudantDB = "easypay"
-    client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
-    client.connect()
-    db = client[cloudantDB]
-    docs = []
-    for doc in db:
-        docs.append(doc)
-    client.disconnect()
-    return dict(docs=docs)
 
 @auth.requires_login()
 def tela_vendedor():
