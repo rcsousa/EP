@@ -1,0 +1,144 @@
+#from bottle import request, run, post, tob, route
+#from io import BytesIO
+
+#@route('/qrcode', method='POST')
+def qrcode():
+    response.flash = T("Welcome to web2py!")
+    return dict(message=T('Hello World'))
+
+def ordem_de_venda():
+    from cloudant.account import Cloudant
+    cloudantDB = "easypay"
+    client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
+    client.connect()
+    db = client[cloudantDB]
+    docs = []
+    for doc in db:
+        docs.append(doc)
+    client.disconnect()
+    return dict(docs=docs)
+
+@auth.requires_login()
+def tela_vendedor():
+    from cloudant.account import Cloudant
+    import os, requests, json
+    db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
+    #rows = db(db.produtos.id > 0).select()
+    linhas = db(db.produtos.id > 0).select()
+    cloudantDB = "easypay"
+    client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
+    client.connect()
+    db = client[cloudantDB]
+    #view = db.all_docs(descending=False, include_docs=True)
+    selector = '''{"selector": {"_id": {"$gt": null},"timestamp": {"$regex": ".*"}},"fields" : ["canal","status_easypay","figura","quantidade","timestamp", "status_comprador", "status_vendedor", "image_name", "item", "valor","_id"], "sort": [{"timestamp": "desc"}]}'''
+    z = requests.post("https://rcsousa.cloudant.com/easypay/_find", data=selector)
+    result = json.loads(z.text)
+    docs = []
+    produto = []
+    preco = []
+    _id = []
+    figura = []
+    for x in linhas:
+        produto.append(x.produto)
+        preco.append(x.preco)
+        _id.append(x.id)
+        figura.append(x.figura)
+    for doc in result['docs']:
+        docs.append(doc)
+    client.disconnect()
+    #return dict(docs=docs, produto=produto, preco=preco)
+    return dict(docs=docs, produto=zip(_id, produto, preco,figura), user=auth.user)
+
+@auth.requires_login()
+def lista_de_produtos():
+    import os
+    db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
+    linhas = db(db.produtos.id > 0).select()
+    produto = []
+    preco = []
+    _id = []
+    figura = []
+    descricao = []
+    for x in linhas:
+        produto.append(x.produto)
+        preco.append(x.preco)
+        _id.append(x.id)
+        figura.append(x.figura)
+        descricao.append(x.descricao)
+    return dict(produtos=zip(_id, produto, descricao, preco,figura), user=auth.user)
+
+@auth.requires_login()
+def tela_easypay():
+    import requests,json
+    selector = '''{"selector": {"_id": {"$gt": null},"timestamp": {"$regex": ".*"}},"fields" : ["canal","status_easypay","figura","quantidade","timestamp", "status_comprador", "status_vendedor", "image_name", "item", "valor","_id"], "sort": [{"timestamp": "desc"}]}'''
+    z = requests.post("https://rcsousa.cloudant.com/easypay/_find", data=selector)
+    result = json.loads(z.text)
+    docs = []
+    for doc in result['docs']:
+        docs.append(doc)
+    return dict(docs=docs, user=auth.user)
+
+@auth.requires_login()
+def tela_cliente():
+    txid = request.vars.getlist("txid")
+    if not txid:
+        return "Eh preciso informar uma transacao para usar essa funcao"
+    from cloudant.account import Cloudant
+    cloudantDB = "easypay"
+    client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
+    client.connect()
+    db = client[cloudantDB]
+    doc = db[txid[0]]
+    id = doc['_id']
+    item = doc['item']
+    quantidade = doc['quantidade']
+    valor = doc['valor']
+    timestamp = doc['timestamp']
+    figura = doc['figura']
+    result = {"id": id, "item" : item, "quantidade" : quantidade, "valor" : valor, "timestamp" : timestamp, "figura" : figura}
+    return dict(ordem=result, user=auth.user)
+
+def tela_qrcode():
+    response.flash = T("Welcome to web2py!")
+    return dict(user=auth.user)
+
+def tela_qrcode_off():
+    txid = request.vars.getlist("txid")
+    return dict(txid=txid[0], user=auth.user)
+
+@auth.requires_login()
+def produtos():
+    grid=SQLFORM.grid(db.produtos, user_signature=False, formstyle='bootstrap3_stacked')
+    return locals()
+
+@auth.requires_login()
+def index():
+    response.flash = T("Welcome to web2py!")
+    return dict(user=auth.user)
+
+@auth.requires_login()
+def undefined():
+    response.flash = T("Welcome to web2py!")
+    return dict(user=auth.user)
+
+@auth.requires_login()
+def navbar():
+    response.flash = T("Welcome to web2py!")
+    return dict(user=auth.user)
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/manage_users (requires membership in
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())

@@ -1,0 +1,55 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+<div id="includednavbar"></div>
+
+<br><br><br><br><br>
+<div class="container-fluid">
+<div  class="thumbnail_container">
+
+<img class="center-block" id="image" src="/easypay/static/images/wait.gif">
+
+</div>
+</div>
+
+
+  <script src="http://www.rcsousa.com.br:8888/js/pushstream.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/easypay/static/js/links.js"></script>
+    <script type="text/javascript" language="javascript" charset="utf-8">
+    $(function(){$("#includednavbar").load("navbar.html");});
+    function messageReceived(text, id, channel) {
+      obj_a = text.replace(/'/g, '"');
+      var lastChar = obj_a.substr(obj_a.length - 1);
+        if (lastChar == "}") {
+            obj_a = obj_a; }
+        else {
+            obj_a = obj_a+"}";
+        }
+      console.log(obj_a);
+      obj = JSON.parse(obj_a);
+      document.getElementById("image").src = obj.image;
+
+    };
+
+    var canal = "caixa-1";
+    var pushstream = new PushStream({
+        host: "www.rcsousa.com.br",
+        port: 8443,
+        useSSL:true,
+      modes: "websocket"
+    });
+    pushstream.onmessage = messageReceived;
+    pushstream.addChannel(canal);
+    pushstream.connect();
+
+
+    </script>
+</body>
+</html>

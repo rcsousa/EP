@@ -1,0 +1,171 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+
+</head>
+
+<body>
+<div id="includednavbar"></div>
+    <br><br><br><br><br>
+<div class="container-fluid">
+
+
+
+   
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th >Valor</th>
+        <th >Parcelas</th>
+        <th align='center'>Status Vendedor</th>
+        <th align='center'>Status Comprador</th>
+        <th align='center'>Status EasyPay</th>
+      </tr>
+    </thead>
+    <tbody>
+        <form class="form-horizontal" id="ajaxform">
+        {{for x in docs:}}
+        <tr>
+            <td>{{=x['item']}}</td>
+            <td>{{=x['valor']}}</td>
+            <td align="center">{{=x['quantidade']}}</td>
+            {{if "Aprovado" in x['status_vendedor']:}}
+            <td><img class="center-block" id="image_vendedor_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x['status_vendedor']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            {{else:}}
+            <td><img  class="center-block" id="image_vendedor_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            {{pass}}
+            {{if "Aprovado" in x['status_comprador']:}}
+            <td><img class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x['status_comprador']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            {{else:}}
+            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            {{pass}}
+            {{if "Aprovado" in x['status_easypay']:}}
+            <td><img class="center-block" id="image_easypay_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x['status_easypay']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            {{else:}}
+            <td><img  class="center-block" id="image_easypay_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            {{pass}}
+            <td>
+                <input id="enviar" name="{{=x['_id']}}" class="btn btn-primary" type="submit" value="Aprovar" onclick='Aprovar(this)'>
+            </td>
+            <td>
+                <input id="enviar" name="{{=x['_id']}}" class="btn btn-primary" type="submit" value="Rejeitar" onclick='Rejeitar(this)'>
+            </td>
+        </tr>
+
+        {{pass}}
+        </form>
+    </tbody>
+  </table>
+
+</div>
+  <script src="http://www.rcsousa.com.br:8888/js/pushstream.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" language="javascript" charset="utf-8" >
+    $(function(){$("#includednavbar").load("navbar.html");});
+    
+    function messageReceived(text, id, channel) {
+      obj_a = text.replace(/'/g, '"');
+      var lastChar = obj_a.substr(obj_a.length - 1);
+        if (lastChar == "}") {
+            obj_a = obj_a; }
+        else {
+            obj_a = obj_a+"}";
+        }
+      console.log(obj_a);
+      //obj_b = obj_a.replace(/\n/g, '<br>');
+      //console.log(obj_b);
+      obj = JSON.parse(obj_a);
+      //document.getElementById("image").src = obj.image;
+      var item = obj.item;
+      var quantidade = obj.quantidade;
+      var valor = obj.valor;
+      var hash_ordem = obj.hash_ordem;
+      var status_vendedor = obj.status_vendedor;
+      var status_comprador = obj.status_comprador;
+      var status_easypay = obj.status_easypay;
+      $("tbody").prepend('<tr><td id="'+item+'_'+hash_ordem+'">'+item+'</td><td id="'+quantidade+'_'+hash_ordem+'">'+quantidade+'</td><td id="'+valor+'_'+hash_ordem+'">'+valor+'</td><td ><img class="center-block" id="image_vendedor_'+hash_ordem+'" class="img-rounded" src="http://rcsousa-bm-01.rcsousa.com.br/easypay/static/images/ok.png" style="width:40px;height:40px"></td><td ><img class="center-block" id="image_comprador_'+hash_ordem+'" class="img-rounded" src="http://rcsousa-bm-01.rcsousa.com.br/easypay/static/images/pending.png" style="width:40px;height:40px"></td><td ><img class="center-block" id="image_easypay_'+hash_ordem+'" class="img-rounded" src="http://rcsousa-bm-01.rcsousa.com.br/easypay/static/images/pending.png" style="width:40px;height:40px"></td><td><input id="enviar" name="'+hash_ordem+'" class="btn btn-primary" type="submit" value="Aprovar Despesa" onclick="getName(this)"></td></tr>');
+
+
+    };
+
+    var canal = "caixa-1";
+    var pushstream = new PushStream({
+        host: "www.rcsousa.com.br",
+        port: 8443,
+        useSSL:true,
+      modes: "websocket"
+    });
+    pushstream.onmessage = messageReceived;
+    pushstream.addChannel(canal);
+    pushstream.connect();
+        
+            function Aprovar(objButton){  
+            //alert(objButton.name);
+            txid = objButton.name;
+            acao = objButton.value;
+            }
+            function Rejeitar(objButton){  
+            //alert(objButton.name);
+            txid = objButton.name;
+            acao = objButton.value;
+            }
+
+
+    $("#ajaxform").submit(function(e)
+    {
+
+        var postData  = {"txid" : txid, "acao" : acao};
+
+
+        //confirm(JSON.stringify(postData));
+        $( "form" )[ 0 ].reset();
+        $.ajax(
+            {
+                // beforeSend: function(xhr) {
+                //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                //}
+                url : "http://www.rcsousa.com.br:9191/aprovar_despesa_easypay",
+                type: "POST",
+                data : JSON.stringify(postData),
+                success:function(data, textStatus, jqXHR) 
+                    {
+                        confirm(acao+" despesa?");
+                        if (acao == "Aprovar") {
+                        document.getElementById("image_easypay_"+txid).src = "/easypay/static/images/ok.png";}
+                        if (acao == "Rejeitar") {
+                        document.getElementById("image_easypay_"+txid).src = "/easypay/static/images/rejeitar.png";}
+                    },
+                error: function(jqXHR, textStatus, errorThrown) 
+                    {
+                    }
+
+            });
+
+
+        e.preventDefault();	//STOP default action
+    });
+
+
+
+</script>
+    
+</body>
+
+
+</html>

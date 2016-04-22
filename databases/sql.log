@@ -1,0 +1,85 @@
+timestamp: 2015-03-29T11:20:33.350435
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-03-29T11:20:33.375294
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-03-29T11:20:33.382182
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2015-03-29T11:20:33.389714
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-03-29T11:20:33.397650
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-03-29T11:20:33.405508
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-04-14T18:35:24.732514
+CREATE TABLE produtos(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    produto TEXT,
+    descricao TEXT,
+    figura TEXT,
+    preco TEXT
+);
+success!
+success!
+timestamp: 2016-04-14T20:53:39.699095
+CREATE TABLE ricardo(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    produto TEXT,
+    descricao TEXT,
+    figura CHAR(512),
+    preco TEXT
+);
+success!
+timestamp: 2016-04-16T09:48:13.759268
+ALTER TABLE auth_user ADD username CHAR(128);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

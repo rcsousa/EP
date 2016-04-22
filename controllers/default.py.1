@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a sample controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+## - api is an example of Hypermedia API support and access control
+#########################################################################
+
+def index():
+    import hashlib
+    from qrcode import *
+    texto = request.vars.getlist("texto")
+    image_name = hashlib.md5(texto[0])
+    qr = QRCode(version=8, error_correction=ERROR_CORRECT_L)
+    qr.add_data(texto[0])
+    qr.make()
+    im = qr.make_image()
+    imagem_view = image_name.hexdigest()+".png"
+    im.save("applications/easypay/static/images/"+image_name.hexdigest()+".png")
+    return dict(image=image_name.hexdigest()+".png")
