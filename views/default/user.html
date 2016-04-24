@@ -2,34 +2,26 @@
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="apple-touch-icon-precomposed" href="/easypay/static/images/logo_iphone.png">
+  <link rel="stylesheet" href="/easypay/static/css/login.css">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
 
 
 </head>
 
-<script type="text/javascript" src="/easypay/static/js/links.js"></script>
-<center><img style="max-width:300px;max-height:120px; margin-top: 20px;" src="/easypay/static/images/logo.png"></center>
-<!--                <img style="max-width:300px;max-height:120px; margin-top: 20px;margin-left: 650px;" src="http://www.rcsousa.com.br/easypay/static/images/logo.png">-->
+<div class="login-page">
 
-<form class="form-horizontal" method="post" style="margin-top:30px;">
-  <div class="form-group">
-    <label for="auth_user_username" class="col-md-4 control-label">Usuário:</label>
-    <div class="col-md-4">
-      <input type="text" class="form-control" id="auth_user_username" name="username" placeholder="Usuário">
-    </div>
+  <div class="form">
+      <center><img style="max-width:300px;max-height:120px; margin-top: 20px;" src="/easypay/static/images/logo.png"></center><br>
+    <form class="login-form" method="post">
+      <input type="text" id="auth_user_username" name="username" placeholder="usuário"/>
+      <input type="password" id="auth_user_password" name="password" placeholder="senha"/>
+      <button type="submit">login</button>
+
   </div>
-  <div class="form-group">
-    <label for="auth_user_password" class="col-md-4 control-label">Senha:</label>
-    <div class="col-md-4">
-      <input type="password" class="form-control" id="auth_user_password" name="password" placeholder="Senha">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-md-offset-7 col-md-10">
-      <button type="submit" class="btn btn-primary">Login</button>
-    </div>
-  </div>
+</div>
+
+
+
 {{=form.custom.end}}

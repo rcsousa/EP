@@ -2,12 +2,16 @@
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-capable" content="yes">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
 
 </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script> 
+    $(function(){$("#includednavbar").load("/easypay/default/navbar.html");});
+    </script>
 
 <body>
 <div id="includednavbar"></div>
@@ -78,11 +82,11 @@
 
 </div>
   <script src="http://www.rcsousa.com.br:8888/js/pushstream.js" type="text/javascript" language="javascript" charset="utf-8"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/easypay/static/js/links.js"></script>
     <script type="text/javascript" language="javascript" charset="utf-8" >
-        $(function(){$("#includednavbar").load("navbar.html");});
+
         function gera_qrcode(image_id) {
             window.location.assign("/easypay/default/tela_qrcode_off.html?txid="+image_id);
         }
