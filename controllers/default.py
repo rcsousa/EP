@@ -6,6 +6,11 @@ def qrcode():
     response.flash = T("Welcome to web2py!")
     return dict(message=T('Hello World'))
 
+@auth.requires_login()
+def oldnavbar():
+    response.flash = T("Welcome to web2py!")
+    return dict(user=auth.user)
+
 
 @auth.requires_login()
 def tela_vendedor():

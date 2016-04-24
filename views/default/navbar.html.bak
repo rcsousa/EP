@@ -2,45 +2,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/easypay/static/css/navbar.css">
   <link rel="apple-touch-icon-precomposed" href="/easypay/static/images/logo_iphone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+		<div class="container navbar-more visible-xs">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#"><i class="menu-icon fa fa-credit-card"> EasyPay</i></a>
+				</li>
+				<li>
+					<a href="#"><i class="menu-icon fa fa-phone"> Entre em Contato</i></a>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="navbar-header hidden-xs">
             <a class="navbar-brand" href="#">
                 <img style="max-width:100px;max-height:40px; margin-top: -10px;" src="/easypay/static/images/logo.png">
             </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
+			</div>
+        <div id="navbar" class="navbar-collapse collapse hidden-xs">
           <ul class="nav navbar-nav">
+
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              <li ><a href="/easypay/default/index.html"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-              <li ><a href="/easypay/default/lista_de_produtos.html"><i class="glyphicon glyphicon-th-large"></i> Lista de Produtos</a></li>
-              <li ><a href="/easypay/default/tela_vendedor.html"><i class="glyphicon glyphicon-list-alt"></i> Registro de Vendas</a></li>
-              <li ><a href="/easypay/default/tela_easypay.html"><i class="glyphicon glyphicon-tasks"></i> Administração EasyPay</a></li>
+              <li ><a href="/easypay/default/index.html"><i class="menu-icon fa fa-home"></i> Home</a></li>
+              <li ><a href="/easypay/default/lista_de_produtos.html"><i class="menu-icon fa fa-list"></i> Lista de Produtos</a></li>
+              <li ><a href="/easypay/default/tela_vendedor.html"><i class="menu-icon fa fa-money"></i> Registro de Vendas</a></li>
+              <li ><a href="/easypay/default/tela_easypay.html"><i class="menu-icon fa fa-credit-card"></i> Administração EasyPay</a></li>
               <!--<li ><a href="/easypay/default/tela_qrcode.html">QRCode</a></li>-->
               <!--<li ><a href="/easypay/default/tela_cliente.html">Tela do Cliente</a></li>-->
 
-                  </li>
                </ul>
-            </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{=user.first_name}} {{=user.last_name}}</a></li>
-      <li><a href="/easypay/default/user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-    </ul>
-  </div>
-</nav>
+               </li>
+              </ul>
+           <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{=user.first_name}} {{=user.last_name}} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="#"><span class="menu-icon fa fa-phone"></span> Contato</a></li>
+                  <li><a href="/easypay/default/user/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+                </li>
+              </div>
+                <div class="container navbar-more visible-xs">
+            			<ul class="nav navbar-nav navbar-right mobile-bar">
+				<li>
+					<a href="/easypay/default/index.html">
+                        <span class="menu-icon fa fa-home"></span>
+						<span class="visible-xs"></i>Home</span>
+					</a>
+				</li>
+				<li>
+					<a href="/easypay/default/lista_de_produtos.html">
+						<span class="menu-icon fa fa-list"></span>
+						<span class="visible-xs">Produtos</span>
+					</a>
+				</li>
+				</li>
+				<li>
+					<a href="/easypay/default/tela_vendedor.html">
+						<span class="menu-icon fa fa-money"></span>
+						<span class="visible-xs">Vendas</span>
+					</a>
+				</li>
+				<li class="hidden-xs">
+					<a href="/easypay/default/tela_easypay.html">
+						<span class="menu-icon fa fa-credit-card"></span>
+						<span class="visible-xs">EasyPay</span>
+					</a>
+				</li>
+				<li class="visible-xs">
+					<a href="#navbar-more-show">
+						<span class="menu-icon fa fa-bars"></span>
+						Mais
+					</a>
+				</li>
+			</ul>
+		</div>
+</div>
+	</nav>
 
 
 
