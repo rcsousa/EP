@@ -11,7 +11,7 @@
 
 <body>
 <div id="includednavbar"></div>
-    <br><br><br><br><br>
+
 <div class="container-fluid">
 
 <form class="form-horizontal" id="ajaxform">
@@ -54,31 +54,23 @@
 
 
   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>TxId</th>
-        <th >Valor</th>
-        <th >Horário</th>
-        <th>Status</th>
-        <th>Atividades</th>
-      </tr>
-    </thead>
+
     <tbody>
         {{for x in docs:}}
         <tr>
-            <td class="col-md-6">{{=x['item']}}</td>
-            <td title="{{=x['_id']}}">{{=x['_id'][:9]}}...</td>
-            <td>{{=x['valor']}}</td>
-            <td align="center">{{=x['timestamp']}}</td>
+            <td class="col-md-6">{{=x['item']}}
+            <br><br>
+            <h3><span class="label label-warning">Preço: {{=x['valor']}}</span></h3>
+            <br><h4><span class="label label-primary">{{=x['timestamp']}}</span></h4></td>
+            <td class="center-block">
             {{if "Aprovado" in x['status_easypay']:}}
-            <td><img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px">
             {{elif "Rejeitado" in x['status_easypay']:}}
-            <td><img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px">
             {{else:}}
-            <td><img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px">
         {{pass}}
-            <td><button id="{{=x['image_name']}}" name="gerar_qrcode" class="btn btn-primary" type="submit" onclick=gera_qrcode(this.id);>Gerar Código</button></td>
+            <br><br><button id="{{=x['image_name']}}" name="gerar_qrcode" class="btn btn-primary" type="submit" onclick=gera_qrcode(this.id);>Gerar Código</button></td>
         </tr>
         {{pass}}
     </tbody>
