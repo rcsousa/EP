@@ -38,7 +38,7 @@
             <td>{{ for produto in x[0]['item']:}}
                 {{=produto}}<br>
                 {{pass}}</td>
-            <td><h4><span class="label label-warning">{{=x[1]}}</span></h4></td>
+            <td><h4><span class="label label-warning">{{=str(x[1]).replace(".",",")}}</span></h4></td>
             <td align="center">{{=x[0]['quantidade']}}</td>
             <td><h4><span class="label label-success" title="{{=x[0]['_id']}}">{{=x[0]['_id'][:9]}}...</span></h4></td>
             {{if "Aprovado" in x[0]['status_vendedor']:}}
@@ -72,7 +72,7 @@
 
 
         {{pass}}
-            <tr><td></td><td><h4><span class="label label-info">{{=total}}</span></h4></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td></td><td><h3><span class="label label-info">{{=str(total).replace(".",",")}}</span></h3></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         </form>
     </tbody>
   </table>

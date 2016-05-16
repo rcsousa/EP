@@ -37,7 +37,7 @@ def tela_vendedor():
     for x in docs:
         for y in x['valor']:
             subtotal.append(float(y.replace(',','.')))
-        subtotal_sum = sum(subtotal)
+        subtotal_sum = sum(round(subtotal,2))
         total.append(subtotal_sum)
         subtotal=[]
     return dict(docs=zip(docs,total), total=sum(total), produto=zip(_id, produto, preco,figura), user=auth.user)
@@ -137,7 +137,7 @@ def tela_cliente():
         subtotal.append(float(y.replace(',','.')))
     subtotal_sum = sum(subtotal)
     total.append(subtotal_sum)
-    return dict(ordem=zip(result,total), user=auth.user)
+    return dict(ordem=result, user=auth.user)
 
 def tela_qrcode():
     response.flash = T("Welcome to web2py!")

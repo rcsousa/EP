@@ -31,7 +31,7 @@
                   <label><input  type="checkbox" id="checkbox" produto="{{=x[1]}}" preco="{{=x[3]}}" figura="{{=x[4]}}" id_produto="{{=x[0]}}">Selecionar</label>
                 </div>
             </td>
-            <td align="center"><img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/{{=x[4]}}"></td>
+            <td align="center"><img class="center-block" style="max-width:200px;max-height:200px;" src="/easypay/default/produtos/download/{{=x[4]}}"></td>
         </tr>
         {{pass}}
         <tr>
@@ -85,8 +85,9 @@
 
     $('.btn-primary').click(function() {
         var el = document.querySelectorAll('input[type="checkbox"]:checked');
-        item=[], valor=[], figura=[];
+        item=[], valor=[], figura=[], id_produto=[];
         for (var x=0; x < el.length; x++) {
+            id_produto.push(el[x].getAttribute("id_produto"));
             item.push(el[x].getAttribute("produto"));
             valor.push(el[x].getAttribute("preco"));
             figura.push(el[x].getAttribute("figura"));
@@ -104,7 +105,7 @@
         //var valor = $(this).attr("preco");
         //var figura = $(this).attr("figura");
         var postData  = {
-                        "ordem" :{ "item" : item, "quantidade" : quantidade, "valor" : valor, "figura": figura},
+                        "ordem" :{ "item" : item, "quantidade" : quantidade, "valor" : valor, "figura": figura, "id_produto": id_produto},
                         "canal" : "caixa-1" 
                         };
 
