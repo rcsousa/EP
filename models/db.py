@@ -11,6 +11,7 @@
 
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
+    #db = DAL('mysql://tweet:tweet@localhost/tweet',pool_size=1,check_reserved=['mysql'], lazy_tables = True)
     db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'])
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
@@ -93,3 +94,9 @@ db.define_table('produtos',
     Field('figura', 'upload', default='static/images/'),
     Field('preco', 'text', requires=IS_NOT_EMPTY()),
     )
+
+db.define_table('ordens',
+    Field('produtos', 'text', requires=IS_NOT_EMPTY()),
+    Field('valor', 'text', requires=IS_NOT_EMPTY()),
+    Field('figura', 'text', requires=IS_NOT_EMPTY()),
+)

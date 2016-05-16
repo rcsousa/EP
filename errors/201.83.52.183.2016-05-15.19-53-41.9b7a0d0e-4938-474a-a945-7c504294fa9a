@@ -1,0 +1,804 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.TypeError'> string indices must be integers, not str"
+p3
+sS'layer'
+p4
+S'/home/www-data/web2py/applications/easypay/views/default/tela_cliente.html'
+p5
+sS'code'
+p6
+S'response.write(\'<head>\\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\\n  <meta name="apple-mobile-web-app-capable" content="yes">\\n  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">\\n  <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">\\n  <meta name="apple-mobile-web-app-capable" content="yes">\\n</head>\\n<body>\\n<div id="includednavbar"></div>\\n\\n<br><br><br><br><br>\\n<div class="container">\\n<form class="form-horizontal" id="ajaxform">\\n<table class="table table-striped">\\n\', escape=False)\nfor x in ordem:\n    response.write(\'\\n  <tr>\\n      <td>Item</td><td>\', escape=False)\n    response.write(x[\'item\'])\n    response.write(\'<br>\\n      \', escape=False)\n    pass\nresponse.write(\'</td>\\n  </tr>\\n  <tr>\\n      <td>Valor</td><td>\', escape=False)\nresponse.write(ordem[\'valor\'])\nresponse.write(\'</td>\\n  </tr>\\n  <tr>\\n    <td>Parcelas</td><td>\', escape=False)\nresponse.write(ordem[\'quantidade\'])\nresponse.write(\'</td>\\n  <tr>\\n      <td>Hora</td><td>\', escape=False)\nresponse.write(ordem[\'timestamp\'])\nresponse.write(\'</td>\\n  </tr>\\n  <tr>\\n  <tr>\\n      <td>Imagem</td><td><img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/\', escape=False)\nresponse.write(ordem[\'figura\'])\nresponse.write(\'"></td>\\n  </tr>\\n  <tr>\\n      <td ><input id="aprovar" name="aprovar" class="btn btn-primary" type="submit" value="Aprovar" onclick=Aprovar(this);></td>\\n      <td align="right"><input id="enviar" id="rejeitar" name="rejeitar" class="btn btn-primary" type="submit" value="Rejeitar" onclick=Rejeitar(this);></td>\\n  </tr>\\n\\n</table>\\n</form>\\n</div>\\n</div>\\n\\n\\n  <script src="http://www.rcsousa.com.br:8888/js/pushstream.js" type="text/javascript" language="javascript" charset="utf-8"></script>\\n  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>\\n  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>\\n  <script type="text/javascript" src="/easypay/static/js/links.js"></script>\\n    <script type="text/javascript" language="javascript" charset="utf-8">\\n            $(function(){$("#includednavbar").load("navbar.html");});\\n\\n            function Aprovar(objButton){  \\n            //alert(objButton.name);\\n            //txid = objButton.name;\\n            acao = objButton.value;\\n            }\\n            function Rejeitar(objButton){  \\n            //alert(objButton.name);\\n            //txid = objButton.name;\\n            acao = objButton.value;\\n            }\\n    $("#ajaxform").submit(function(e)\\n    {\\n        var txid = "\', escape=False)\nresponse.write(ordem[\'id\'])\nresponse.write(\'"\\n        var postData  = {"txid" : txid, "acao": acao };\\n\\n\\n        //confirm(JSON.stringify(postData));\\n        $( "form" )[ 0 ].reset();\\n        $.ajax(\\n            {\\n                // beforeSend: function(xhr) {\\n                //xhr.setRequestHeader(\\\'Access-Control-Allow-Origin\\\', \\\'*\\\');\\n                //}\\n                url : "http://www.rcsousa.com.br:9191/aprovar_despesa_comprador",\\n                type: "POST",\\n                data : JSON.stringify(postData),\\n                success:function(data, textStatus, jqXHR) \\n                    {\\n                        confirm(acao+" Despesa?");\\n                        if (acao == "Aprovar") {\\n                            window.location.assign("/easypay/static/confirma.html")}\\n                        if (acao == "Rejeitar") {\\n                            window.location.assign("/easypay/static/rejeita.html")}\\n                    },\\n                error: function(jqXHR, textStatus, errorThrown) \\n                    {\\n                    }\\n\\n            });\\n\\n\\n        e.preventDefault();\\t//STOP default action\\n    });\\n    </script>\\n</body>\\n</html>\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.TypeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.TypeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.TypeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.TypeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.TypeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.TypeError object>'
+p23
+sS'args'
+p24
+S"('string indices must be integers, not str',)"
+p25
+sS'__reduce__'
+p26
+S'<built-in method __reduce__ of exceptions.TypeError object>'
+p27
+sS'__str__'
+p28
+S"<method-wrapper '__str__' of exceptions.TypeError object>"
+p29
+sS'__format__'
+p30
+S'<built-in method __format__ of exceptions.TypeError object>'
+p31
+sS'__getattribute__'
+p32
+S"<method-wrapper '__getattribute__' of exceptions.TypeError object>"
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.TypeError'>"
+p35
+sS'__unicode__'
+p36
+S'<built-in method __unicode__ of exceptions.TypeError object>'
+p37
+sS'__delattr__'
+p38
+S"<method-wrapper '__delattr__' of exceptions.TypeError object>"
+p39
+sS'__subclasshook__'
+p40
+S'<built-in method __subclasshook__ of type object>'
+p41
+sS'__repr__'
+p42
+S"<method-wrapper '__repr__' of exceptions.TypeError object>"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.TypeError object>'
+p47
+sS'__doc__'
+p48
+S"'Inappropriate argument type.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.TypeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S'string indices must be integers, not str'
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\nP\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>easypay</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183-dd0c616e-12f1-426a-9dd2-ec9accc1cd71<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_easypay</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_TYPE</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">DOCUMENT_ROOT</td><td style="vertical-align:top;">:</td><td><div>/usr/local/nginx/html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTPS</td><td style="vertical-align:top;">:</td><td><div>on</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_easypay=201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117; session_id_admin=201.83.52.183-dd0c616e-12f1-426a-9dd2-ec9accc1cd71</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>easypay.rcsousa.com.br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:46.0) Gecko/20100101 Firefox/46.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente.html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div>txid=3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>54645</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_URI</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente.html?txid=3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>dev-rcsousa-04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>443</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>nginx/1.8.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">UWSGI_SCHEME</td><td style="vertical-align:top;">:</td><td><div>https</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/www-data/web2py/applications/examples/&#x27;, &#x27;/home/www-data/web2py/applications/easypay/&#x27;, &#x27;/home/www-data/web2py/applications/admin/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_length</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_type</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">document_root</td><td style="vertical-align:top;">:</td><td><div>/usr/local/nginx/html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_easypay=201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117; session_id_admin=201.83.52.183-dd0c616e-12f1-426a-9dd2-ec9accc1cd71</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>easypay.rcsousa.com.br</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:46.0) Gecko/20100101 Firefox/46.0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">https</td><td style="vertical-align:top;">:</td><td><div>on</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::1</div></td></tr><tr><td><div>localhost</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>dev-rcsousa-04</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente.html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div>txid=3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>54645</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente?txid=3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>dev-rcsousa-04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>443</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>nginx/1.8.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uwsgi.node</td><td style="vertical-align:top;">:</td><td><div>dev-rcsousa-04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uwsgi.version</td><td style="vertical-align:top;">:</td><td><div>2.0.10</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uwsgi_node</td><td style="vertical-align:top;">:</td><td><div>dev-rcsousa-04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uwsgi_scheme</td><td style="vertical-align:top;">:</td><td><div>https</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uwsgi_version</td><td style="vertical-align:top;">:</td><td><div>2.0.10</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_original_uri</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente.html?txid=3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.12-stable+timestamp.2015.01.17.06.11.03</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;wsgi_errors&#x27;, mode &#x27;w&#x27; at 0x7fd8f9d72ae0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;built-in function uwsgi_sendfile&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;uwsgi._Input object at 0x7fd901ca6e58&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>https</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;wsgi_errors&#x27;, mode &#x27;w&#x27; at 0x7fd8f9d72ae0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;built-in function uwsgi_sendfile&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;uwsgi._Input object at 0x7fd901ca6e58&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>https</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py/applications/easypay/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>tela_cliente</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/home/www-data/web2py/applications/examples/&#x27;, &#x27;/home/www-data/web2py/applications/easypay/&#x27;, &#x27;/home/www-data/web2py/applications/admin/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::1</div></td></tr><tr><td><div>localhost</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>127.0.0.1</div></td></tr><tr><td><div>dev-rcsousa-04</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.9.12-stable+timestamp.2015.01.17.06.11.03</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_sheduler</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 15, 19, 53, 41, 936556)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/easypay/default/tela_cliente.html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 15, 23, 53, 41, 936586)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>easypay/201.83.52.183.2016-05-15.19-53-41.9b7a0d0e-4938-474a-a945-7c504294fa9a</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x7fd8f6c28290&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/home/www-data/web2py/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x7fd8f616ef30, file "/...easypay/views/default/tela_cliente.html", line 1>'
+p69
+ssS'lnum'
+p70
+I224
+sS'lines'
+p71
+(dp72
+I224
+S'        exec ccode in environment'
+p73
+sI225
+S'    except HTTP:'
+p74
+sI226
+S'        raise'
+p75
+sI227
+S'    except RestrictedError:'
+p76
+sI228
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p77
+sI219
+S'    try:'
+p78
+sI220
+S'        if isinstance(code, types.CodeType):'
+p79
+sI221
+S'            ccode = code'
+p80
+sI222
+S'        else:'
+p81
+sI223
+S'            ccode = compile2(code, layer)'
+p82
+ssS'call'
+p83
+S'(code=\'response.write(\\\'<head>\\\\n  <meta name="viewport" ...    </script>\\\\n</body>\\\\n</html>\\\\n\\\', escape=False)\', environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, \'CAT\': <class \'gluon.html.CAT\'>, ...}, layer=\'/home/www-data/web2py/applications/easypay/views/default/tela_cliente.html\')'
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/home/www-data/web2py/applications/easypay/views/default/tela_cliente.html'
+p88
+sg64
+(dp89
+S'href'
+p90
+S'undefined'
+p91
+sS'link'
+p92
+g91
+sS'rel'
+p93
+g91
+ssg70
+I4
+sg71
+(dp94
+I1
+S'response.write(\'<head>\\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\\n  <meta name="apple-mobile-web-app-capable" content="yes">\\n  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">\\n  <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">\\n  <meta name="apple-mobile-web-app-capable" content="yes">\\n</head>\\n<body>\\n<div id="includednavbar"></div>\\n\\n<br><br><br><br><br>\\n<div class="container">\\n<form class="form-horizontal" id="ajaxform">\\n<table class="table table-striped">\\n\', escape=False)'
+p95
+sI2
+S'for x in ordem:'
+p96
+sI3
+S"    response.write('\\n  <tr>\\n      <td>Item</td><td>', escape=False)"
+p97
+sI4
+S"    response.write(x['item'])"
+p98
+sI5
+S"    response.write('<br>\\n      ', escape=False)"
+p99
+sI6
+S'    pass'
+p100
+sI7
+S"response.write('</td>\\n  </tr>\\n  <tr>\\n      <td>Valor</td><td>', escape=False)"
+p101
+sI8
+S"response.write(ordem['valor'])"
+p102
+sI9
+S"response.write('</td>\\n  </tr>\\n  <tr>\\n    <td>Parcelas</td><td>', escape=False)"
+p103
+sI10
+S"response.write(ordem['quantidade'])"
+p104
+sI11
+S"response.write('</td>\\n  <tr>\\n      <td>Hora</td><td>', escape=False)"
+p105
+sI12
+S"response.write(ordem['timestamp'])"
+p106
+sI13
+S'response.write(\'</td>\\n  </tr>\\n  <tr>\\n  <tr>\\n      <td>Imagem</td><td><img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/\', escape=False)'
+p107
+sI14
+S"response.write(ordem['figura'])"
+p108
+ssg83
+S'()'
+p109
+sg85
+S'<module>'
+p110
+sasS'pyver'
+p111
+S'Python 2.7.6: /usr/local/bin/uwsgi (prefix: /usr)'
+p112
+sS'session'
+p113
+g57
+(S's{\t\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>3600</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>b241a646-7bb1-413e-a00e-3e6ca98d8e28</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 15, 19, 51, 27, 929918)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remember_me</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>ricardo.c.sousa@gmail.com</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>Ricardo</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>1L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>Coelho</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">username</td><td style="vertical-align:top;">:</td><td><div>rcsousa</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">1</td><td style="vertical-align:top;">:</td><td><div>user_1</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr></table></div>'
+tRp114
+sS'etype'
+p115
+S"<type 'exceptions.TypeError'>"
+p116
+sS'date'
+p117
+S'Sun May 15 19:53:42 2016'
+p118
+sS'response'
+p119
+g57
+(S's<2\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x7fd8f579a880&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_easypay</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div>: </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>table3cols</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">logo</td><td style="vertical-align:top;">:</td><td><div><a class="brand" href="http://www.web2py.com/"><b>web<span>2</span>py</b>&trade;&nbsp;</a></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Principal</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div><span class="highlighted">web2py</span></div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Meus sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Esta aplica\xc3\xa7\xc3\xa3o</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/design/easypay</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Controller&#x27;&gt;, False, &#x27;/admin/edit/easypay/controllers/default.py&#x27;), (&lt;lazyT &#x27;View&#x27;&gt;, False, &#x27;/admin/edit/easypay/views/default/tela_cliente.html&#x27;), (&lt;lazyT &#x27;Layout&#x27;&gt;, False, &#x27;/admin/edit/easypay/views/layout.html&#x27;), (&lt;lazyT &#x27;Stylesheet&#x27;&gt;, False, &#x27;/admin/edit/easypay/static/css/web2py.css&#x27;), (&lt;lazyT &#x27;DB Model&#x27;&gt;, False, &#x27;/admin/edit/easypay/models/db.py&#x27;), (&lt;lazyT &#x27;Menu Model&#x27;&gt;, False, &#x27;/admin/edit/easypay/models/menu.py&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;/appadmin&#x27;), (&lt;lazyT &#x27;Errors&#x27;&gt;, False, &#x27;/admin/errors/easypay&#x27;), (&lt;lazyT &#x27;About&#x27;&gt;, False, &#x27;/admin/about/easypay&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Download&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Support&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/support&#x27;), (&lt;lazyT &#x27;Demo&#x27;&gt;, False, &#x27;http://web2py.com/demo_admin&#x27;), (&lt;lazyT &#x27;Quick Examples&#x27;&gt;, False, &#x27;http://web2py.com/examples/default/examples&#x27;), (&lt;lazyT &#x27;FAQ&#x27;&gt;, False, &#x27;http://web2py.com/AlterEgo&#x27;), (&lt;lazyT &#x27;Videos&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/videos/&#x27;), (&lt;lazyT &#x27;Free Applications&#x27;&gt;, False, &#x27;http://web2py.com/appliances&#x27;), (&lt;lazyT &#x27;Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layouts&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;), (&lt;lazyT &#x27;Recipes&#x27;&gt;, False, &#x27;http://web2pyslices.com/&#x27;), (&lt;lazyT &#x27;Semantic&#x27;&gt;, False, &#x27;http://web2py.com/semantic&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documenta\xc3\xa7\xc3\xa3o</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Preface&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/00&#x27;), (&lt;lazyT &#x27;Introduction&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/01&#x27;), (&lt;lazyT &#x27;Python&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/02&#x27;), (&lt;lazyT &#x27;Overview&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/03&#x27;), (&lt;lazyT &#x27;The Core&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/04&#x27;), (&lt;lazyT &#x27;The Views&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/05&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/06&#x27;), (&lt;lazyT &#x27;Forms and Validators&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/07&#x27;), (&lt;lazyT &#x27;Email and SMS&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/08&#x27;), (&lt;lazyT &#x27;Access Control&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/09&#x27;), (&lt;lazyT &#x27;Services&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/10&#x27;), (&lt;lazyT &#x27;Ajax Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/11&#x27;), (&lt;lazyT &#x27;Components and Plugins&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/12&#x27;), (&lt;lazyT &#x27;Deployment Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/13&#x27;), (&lt;lazyT &#x27;Other Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/14&#x27;), (&lt;lazyT &#x27;Buy this book&#x27;&gt;, False, &#x27;http://stores.lulu.com/web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Comunidade</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Groups&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/usergroups&#x27;), (&lt;lazyT &#x27;Twitter&#x27;&gt;, False, &#x27;http://twitter.com/web2py&#x27;), (&lt;lazyT &#x27;Live Chat&#x27;&gt;, False, &#x27;http://webchat.freenode.net/?channels=web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&#x27;plugin_wiki&#x27;, False, &#x27;http://web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Other Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layout Plugins&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;)]</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/tela_cliente/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_easypay</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/home/www-data/web2py/applications/easypay/sessions/0a9/09f/201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117&#x27;, mode &#x27;rb+&#x27; at 0x7fd8f6c48270&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/home/www-data/web2py/applications/easypay/sessions/201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>7cfba66fdbb18acecb8531e8b2db7273</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>201.83.52.183-0c4dd306-d85a-47bd-ab49-245a544f1117</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_easypay</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>easypay</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Easypay</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/tela_cliente.html</div></td></tr></table></div>'
+tRp120
+sS'locals'
+p121
+(dp122
+S'Service'
+p123
+S"<class 'gluon.tools.Service'>"
+p124
+sS'OBJECT'
+p125
+S"<class 'gluon.html.OBJECT'>"
+p126
+sS'SQLDB'
+p127
+S"<class 'gluon.dal.base.DAL'>"
+p128
+sg113
+S"<Storage {'_auth_next': None, 'flash': None, 'au...gin]': ['f8f34117-996d-47fa-ac58-de1caeb33c02']}>"
+p129
+sS'LINK'
+p130
+S"<class 'gluon.html.LINK'>"
+p131
+sS'BR'
+p132
+S"<class 'gluon.html.BR'>"
+p133
+sS'local_import'
+p134
+S'<function <lambda>>'
+p135
+sS'OPTGROUP'
+p136
+S"<class 'gluon.html.OPTGROUP'>"
+p137
+sS'__package__'
+p138
+S'None'
+p139
+sS'PRE'
+p140
+S"<class 'gluon.html.PRE'>"
+p141
+sS'IS_INT_IN_RANGE'
+p142
+S"<class 'gluon.validators.IS_INT_IN_RANGE'>"
+p143
+sS'IS_LOWER'
+p144
+S"<class 'gluon.validators.IS_LOWER'>"
+p145
+sS'IS_STRONG'
+p146
+S"<class 'gluon.validators.IS_STRONG'>"
+p147
+sS'cache'
+p148
+S'<gluon.cache.Cache object>'
+p149
+sS'IS_IN_DB'
+p150
+S"<class 'gluon.validators.IS_IN_DB'>"
+p151
+sS'TAG'
+p152
+S'<gluon.html.__TAG__ object>'
+p153
+sS'SQLField'
+p154
+S"<class 'gluon.dal.objects.Field'>"
+p155
+sS'mail'
+p156
+S'<gluon.tools.Mail object>'
+p157
+sS'BODY'
+p158
+S"<class 'gluon.html.BODY'>"
+p159
+sS'IS_DATE_IN_RANGE'
+p160
+S"<class 'gluon.validators.IS_DATE_IN_RANGE'>"
+p161
+sS'IFRAME'
+p162
+S"<class 'gluon.html.IFRAME'>"
+p163
+sS'URL'
+p164
+S'<function URL>'
+p165
+sS'__file__'
+p166
+S"'/home/www-data/web2py/applications/easypay/views/default/tela_cliente.html'"
+p167
+sS'db'
+p168
+S'<DAL uri="sqlite://storage.sqlite">'
+p169
+sS'auth'
+p170
+S'<gluon.tools.Auth object>'
+p171
+sS'P'
+S"<class 'gluon.html.P'>"
+p172
+sS'TFOOT'
+p173
+S"<class 'gluon.html.TFOOT'>"
+p174
+sS'XHTML'
+p175
+S"<class 'gluon.html.XHTML'>"
+p176
+sS'ON'
+p177
+S'True'
+p178
+sS'OL'
+p179
+S"<class 'gluon.html.OL'>"
+p180
+sS'TEXTAREA'
+p181
+S"<class 'gluon.html.TEXTAREA'>"
+p182
+sS'MENU'
+p183
+S"<class 'gluon.html.MENU'>"
+p184
+sS'IS_IMAGE'
+p185
+S"<class 'gluon.validators.IS_IMAGE'>"
+p186
+sS'x'
+S"'figura'"
+p187
+sS'EM'
+p188
+S"<class 'gluon.html.EM'>"
+p189
+sS'CODE'
+p190
+S"<class 'gluon.html.CODE'>"
+p191
+sS'HTTP'
+p192
+S"<class 'gluon.http.HTTP'>"
+p193
+sS'HR'
+p194
+S"<class 'gluon.html.HR'>"
+p195
+sS'IS_DATETIME'
+p196
+S"<class 'gluon.validators.IS_DATETIME'>"
+p197
+sS'STYLE'
+p198
+S"<class 'gluon.html.STYLE'>"
+p199
+sS'LABEL'
+p200
+S"<class 'gluon.html.LABEL'>"
+p201
+sS'CLEANUP'
+p202
+S"<class 'gluon.validators.CLEANUP'>"
+p203
+sS'plugins'
+p204
+S'<gluon.tools.PluginManager object>'
+p205
+sS'SELECT'
+p206
+S"<class 'gluon.html.SELECT'>"
+p207
+sS'use_janrain'
+p208
+S'<function use_janrain>'
+p209
+sS'CENTER'
+p210
+S"<class 'gluon.html.CENTER'>"
+p211
+sS'Auth'
+p212
+S"<class 'gluon.tools.Auth'>"
+p213
+sS'DEVELOPMENT_MENU'
+p214
+g178
+sS'__builtins__'
+p215
+S"{'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'BaseException': <type 'exceptions.BaseException'>, 'BufferError': <type 'exceptions.BufferError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'EOFError': <type 'exceptions.EOFError'>, 'Ellipsis': Ellipsis, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, ...}"
+p216
+sS'HTML'
+p217
+S"<class 'gluon.html.HTML'>"
+p218
+sS'SQLFORM'
+p219
+S"<class 'gluon.sqlhtml.SQLFORM'>"
+p220
+sS'LOAD'
+p221
+S'<function LOAD>'
+p222
+sS'redirect'
+p223
+S'<function redirect>'
+p224
+sS'FIELDSET'
+p225
+S"<class 'gluon.html.FIELDSET'>"
+p226
+sS'IS_EQUAL_TO'
+p227
+S"<class 'gluon.validators.IS_EQUAL_TO'>"
+p228
+sS'embed64'
+p229
+S'<function embed64>'
+p230
+sS'IS_LIST_OF'
+p231
+S"<class 'gluon.validators.IS_LIST_OF'>"
+p232
+sS'INPUT'
+p233
+S"<class 'gluon.html.INPUT'>"
+p234
+sS'EMBED'
+p235
+S"<class 'gluon.html.EMBED'>"
+p236
+sS'_'
+S'<function _>'
+p237
+sS'H2'
+p238
+S"<class 'gluon.html.H2'>"
+p239
+sS'H3'
+p240
+S"<class 'gluon.html.H3'>"
+p241
+sS'BUTTON'
+p242
+S"<class 'gluon.html.BUTTON'>"
+p243
+sS'H1'
+p244
+S"<class 'gluon.html.H1'>"
+p245
+sS'H6'
+p246
+S"<class 'gluon.html.H6'>"
+p247
+sS'H4'
+p248
+S"<class 'gluon.html.H4'>"
+p249
+sS'H5'
+p250
+S"<class 'gluon.html.H5'>"
+p251
+sS'UL'
+p252
+S"<class 'gluon.html.UL'>"
+p253
+sS'IS_UPPER'
+p254
+S"<class 'gluon.validators.IS_UPPER'>"
+p255
+sS'xmlescape'
+p256
+S'<function xmlescape>'
+p257
+sS'IS_TIME'
+p258
+S"<class 'gluon.validators.IS_TIME'>"
+p259
+sS'OPTION'
+p260
+S"<class 'gluon.html.OPTION'>"
+p261
+sS'TITLE'
+p262
+S"<class 'gluon.html.TITLE'>"
+p263
+sS'CRYPT'
+p264
+S"<class 'gluon.validators.CRYPT'>"
+p265
+sS'IS_EMPTY_OR'
+p266
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p267
+sS'MARKMIN'
+p268
+S"<class 'gluon.html.MARKMIN'>"
+p269
+sS'__name__'
+p270
+S"'__restricted__'"
+p271
+sS'STRONG'
+p272
+S"<class 'gluon.html.STRONG'>"
+p273
+sS'COL'
+p274
+S"<class 'gluon.html.COL'>"
+p275
+sS'service'
+p276
+S'<gluon.tools.Service object>'
+p277
+sS'SCRIPT'
+p278
+S"<class 'gluon.html.SCRIPT'>"
+p279
+sS'TABLE'
+p280
+S"<class 'gluon.html.TABLE'>"
+p281
+sS'IS_IPV4'
+p282
+S"<class 'gluon.validators.IS_IPV4'>"
+p283
+sS'IS_LENGTH'
+p284
+S"<class 'gluon.validators.IS_LENGTH'>"
+p285
+sS'IS_IPV6'
+p286
+S"<class 'gluon.validators.IS_IPV6'>"
+p287
+sS'XML'
+p288
+S"<class 'gluon.html.XML'>"
+p289
+sS'B'
+S"<class 'gluon.html.B'>"
+p290
+sS'IMG'
+p291
+S"<class 'gluon.html.IMG'>"
+p292
+sS'SQLTABLE'
+p293
+S"<class 'gluon.sqlhtml.SQLTABLE'>"
+p294
+sS'IS_MATCH'
+p295
+S"<class 'gluon.validators.IS_MATCH'>"
+p296
+sS'IS_ALPHANUMERIC'
+p297
+S"<class 'gluon.validators.IS_ALPHANUMERIC'>"
+p298
+sS'SPAN'
+p299
+S"<class 'gluon.html.SPAN'>"
+p300
+sS'IS_JSON'
+p301
+S"<class 'gluon.validators.IS_JSON'>"
+p302
+sS'IS_IPADDRESS'
+p303
+S"<class 'gluon.validators.IS_IPADDRESS'>"
+p304
+sS'IS_SLUG'
+p305
+S"<class 'gluon.validators.IS_SLUG'>"
+p306
+sS'BEAUTIFY'
+p307
+S"<class 'gluon.html.BEAUTIFY'>"
+p308
+sS'META'
+p309
+S"<class 'gluon.html.META'>"
+p310
+sS'IS_DATE'
+p311
+S"<class 'gluon.validators.IS_DATE'>"
+p312
+sS'IS_EMAIL'
+p313
+S"<class 'gluon.validators.IS_EMAIL'>"
+p314
+sS'IS_NOT_EMPTY'
+p315
+S"<class 'gluon.validators.IS_NOT_EMPTY'>"
+p316
+sS'IS_FLOAT_IN_RANGE'
+p317
+S"<class 'gluon.validators.IS_FLOAT_IN_RANGE'>"
+p318
+sS'TBODY'
+p319
+S"<class 'gluon.html.TBODY'>"
+p320
+sS'CAT'
+p321
+S"<class 'gluon.html.CAT'>"
+p322
+sS'Field'
+p323
+S"<class 'gluon.dal.objects.Field'>"
+p324
+sS'IS_LIST_OF_EMAILS'
+p325
+S"<class 'gluon.validators.IS_LIST_OF_EMAILS'>"
+p326
+sS'DIV'
+p327
+S"<class 'gluon.html.DIV'>"
+p328
+sS'LEGEND'
+p329
+S"<class 'gluon.html.LEGEND'>"
+p330
+sS'COLGROUP'
+p331
+S"<class 'gluon.html.COLGROUP'>"
+p332
+sS'DAL'
+p333
+S"<class 'gluon.dal.base.DAL'>"
+p334
+sS'ASSIGNJS'
+p335
+S'<function ASSIGNJS>'
+p336
+sS'TR'
+p337
+S"<class 'gluon.html.TR'>"
+p338
+sS'LI'
+p339
+S"<class 'gluon.html.LI'>"
+p340
+sS'TH'
+p341
+S"<class 'gluon.html.TH'>"
+p342
+sS'TD'
+p343
+S"<class 'gluon.html.TD'>"
+p344
+sS'PluginManager'
+p345
+S"<class 'gluon.tools.PluginManager'>"
+p346
+sS'IS_URL'
+p347
+S"<class 'gluon.validators.IS_URL'>"
+p348
+sS'A'
+S"<class 'gluon.html.A'>"
+p349
+sS'HEAD'
+p350
+S"<class 'gluon.html.HEAD'>"
+p351
+sS'IS_NULL_OR'
+p352
+S"<class 'gluon.validators.IS_EMPTY_OR'>"
+p353
+sS'IS_DATETIME_IN_RANGE'
+p354
+S"<class 'gluon.validators.IS_DATETIME_IN_RANGE'>"
+p355
+sS'FORM'
+p356
+S"<class 'gluon.html.FORM'>"
+p357
+sS'I'
+S"<class 'gluon.html.I'>"
+p358
+sS'IS_NOT_IN_DB'
+p359
+S"<class 'gluon.validators.IS_NOT_IN_DB'>"
+p360
+sS'user'
+p361
+S"<Row {'username': 'rcsousa', 'first_name': 'Rica...word_key': '', 'registration_key': '', 'id': 1L}>"
+p362
+sg119
+S"<Storage {'body': <cStringIO.StringO object at 0...8f57a20c8>, 'view': 'default/tela_cliente.html'}>"
+p363
+sS'THEAD'
+p364
+S"<class 'gluon.html.THEAD'>"
+p365
+sS'ANY_OF'
+p366
+S"<class 'gluon.validators.ANY_OF'>"
+p367
+sS'ordem'
+p368
+S"{'figura': [u'produtos.figura.b5dc69dbdb53c837.3438393638365f676466662e706e67.png', u'produtos.figura.bff6e98ddac8e30b.3438393637395...34343936303130322d5265636f76657265642e706e67.png', u'produtos.figura.8d62aadd75e61f5c.3936343637315f626163363633303865662e6a7067.jpg'], 'id': u'3ac5d0b03061af88513472892acd7a6ac1cc03522f05bbaf94d7774d0bfb10b7', 'item': [u'Camiseta Express\\xf5es Darth Vader', u'Camiseta Unissex Logo Imp\\xe9rio Star Wars', u'Camiseta Star Wars Trooper Helmet'], 'quantidade': u'1', 'timestamp': u'2016-05-15 13:19:56', 'valor': [u'79,90', u'69,90', u'79,90']}"
+p369
+sg56
+S"<Storage {'_vars': <Storage {'txid': '3ac5d0b030...: '/home/www-data/web2py/applications/easypay/'}>"
+p370
+sS'IS_EXPR'
+p371
+S"<class 'gluon.validators.IS_EXPR'>"
+p372
+sS'T'
+S'<gluon.languages.translator object>'
+p373
+sS'IS_IN_SET'
+p374
+S"<class 'gluon.validators.IS_IN_SET'>"
+p375
+sS'IS_UPLOAD_FILENAME'
+p376
+S"<class 'gluon.validators.IS_UPLOAD_FILENAME'>"
+p377
+sS'TT'
+p378
+S"<class 'gluon.html.TT'>"
+p379
+sS'IS_DECIMAL_IN_RANGE'
+p380
+S"<class 'gluon.validators.IS_DECIMAL_IN_RANGE'>"
+p381
+sssS'traceback'
+p382
+S'Traceback (most recent call last):\n  File "/home/www-data/web2py/gluon/restricted.py", line 224, in restricted\n    exec ccode in environment\n  File "/home/www-data/web2py/applications/easypay/views/default/tela_cliente.html", line 4, in <module>\n    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">\nTypeError: string indices must be integers, not str\n'
+p383
+s.

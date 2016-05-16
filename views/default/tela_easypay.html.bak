@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -35,40 +35,44 @@
         <form class="form-horizontal" id="ajaxform">
         {{for x in docs:}}
         <tr>
-            <td>{{=x['item']}}</td>
-            <td><h4><span class="label label-warning">{{=x['valor']}}</span></h4></td>
-            <td align="center">{{=x['quantidade']}}</td>
-            <td><h4><span class="label label-success" title="{{=x['_id']}}">{{=x['_id'][:9]}}...</span></h4></td>
-            {{if "Aprovado" in x['status_vendedor']:}}
-            <td><img class="center-block" id="image_vendedor_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
-            {{elif "Rejeitado" in x['status_vendedor']:}}
-            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            <td>{{ for produto in x[0]['item']:}}
+                {{=produto}}<br>
+                {{pass}}</td>
+            <td><h4><span class="label label-warning">{{=x[1]}}</span></h4></td>
+            <td align="center">{{=x[0]['quantidade']}}</td>
+            <td><h4><span class="label label-success" title="{{=x[0]['_id']}}">{{=x[0]['_id'][:9]}}...</span></h4></td>
+            {{if "Aprovado" in x[0]['status_vendedor']:}}
+            <td><img class="center-block" id="image_vendedor_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x[0]['status_vendedor']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
             {{else:}}
-            <td><img  class="center-block" id="image_vendedor_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            <td><img  class="center-block" id="image_vendedor_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
             {{pass}}
-            {{if "Aprovado" in x['status_comprador']:}}
-            <td><img class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
-            {{elif "Rejeitado" in x['status_comprador']:}}
-            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            {{if "Aprovado" in x[0]['status_comprador']:}}
+            <td><img class="center-block" id="image_comprador_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x[0]['status_comprador']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
             {{else:}}
-            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            <td><img  class="center-block" id="image_comprador_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
             {{pass}}
-            {{if "Aprovado" in x['status_easypay']:}}
-            <td><img class="center-block" id="image_easypay_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
-            {{elif "Rejeitado" in x['status_easypay']:}}
-            <td><img  class="center-block" id="image_comprador_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
+            {{if "Aprovado" in x[0]['status_easypay']:}}
+            <td><img class="center-block" id="image_easypay_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px"></td>
+            {{elif "Rejeitado" in x[0]['status_easypay']:}}
+            <td><img  class="center-block" id="image_comprador_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px"></td>
             {{else:}}
-            <td><img  class="center-block" id="image_easypay_{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
+            <td><img  class="center-block" id="image_easypay_{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px"></td>
             {{pass}}
             <td>
-                <input id="enviar" name="{{=x['_id']}}" class="btn btn-primary" type="submit" value="Aprovar" onclick='Aprovar(this)'>
+                <input id="enviar" name="{{=x[0]['_id']}}" class="btn btn-primary" type="submit" value="Aprovar" onclick='Aprovar(this)'>
             </td>
             <td>
-                <input id="enviar" name="{{=x['_id']}}" class="btn btn-primary" type="submit" value="Rejeitar" onclick='Rejeitar(this)'>
+                <input id="enviar" name="{{=x[0]['_id']}}" class="btn btn-primary" type="submit" value="Rejeitar" onclick='Rejeitar(this)'>
             </td>
         </tr>
 
+
         {{pass}}
+            <tr><td></td><td><h3><span class="label label-info">{{=total}}</span></h3></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
         </form>
     </tbody>
   </table>

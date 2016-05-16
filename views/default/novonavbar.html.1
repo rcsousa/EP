@@ -1,0 +1,91 @@
+<head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/easypay/static/css/navbar.css">
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container navbar-more visible-xs">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#"><i class="menu-icon fa fa-credit-card"> EasyPay</i></a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="menu-icon fa fa-phone"></span>
+						<span class="visible-xs">Contact</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="navbar-header hidden-xs">
+            <a class="navbar-brand" href="#">
+                <img style="max-width:100px;max-height:40px; margin-top: -10px;" src="/easypay/static/images/logo.png">
+            </a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right mobile-bar">
+				<li>
+					<a href="#">
+						<span class="menu-icon fa fa-home"></span>
+						Home
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="menu-icon fa fa-list"></span>
+						<span class="hidden-xs">Lista de Produtos</span>
+						<span class="visible-xs">Produtos</span>
+					</a>
+				</li>
+				</li>
+				<li>
+					<a href="#">
+						<span class="menu-icon fa fa-money"></span>
+						<span class="hidden-xs">Registro de Venda</span>
+						<span class="visible-xs">Vendas</span>
+					</a>
+				</li>
+				<li class="hidden-xs">
+					<a href="#">
+						<span class="menu-icon fa fa-credit-card"></span>
+						<span class="hidden-xs">Administração EasyPay</span>
+						<span class="visible-xs">EasyPay</span>
+					</a>
+				</li>
+				<li class="hidden-xs">
+					<a href="#">
+						<span class="menu-icon fa fa-phone"></span>						
+						<span class="hidden-xs">Contact Us</span>
+						<span class="visible-xs">Contact</span>
+					</a>
+				</li>
+				<li class="visible-xs">
+					<a href="#navbar-more-show">
+						<span class="menu-icon fa fa-bars"></span>
+						More
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/easypay/static/js/links.js"></script>
+<script type="text/javascript" language="javascript" charset="utf-8" >
+    $(document).ready(function() {
+    $('a[href="#navbar-more-show"], .navbar-more-overlay').on('click', function(event) {
+		event.preventDefault();
+		$('body').toggleClass('navbar-more-show');
+		if ($('body').hasClass('navbar-more-show'))	{
+			$('a[href="#navbar-more-show"]').closest('li').addClass('active');
+		}else{
+			$('a[href="#navbar-more-show"]').closest('li').removeClass('active');
+		}
+		return false;
+	});
+});
+</script>

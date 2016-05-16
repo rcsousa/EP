@@ -12,25 +12,31 @@
 <div class="container">
 <form class="form-horizontal" id="ajaxform">
 <table class="table table-striped">
+  <tr>
+      <td>Item</td><td>{{for x in ordem['item']:}}
+      {{=x}}<br>
+      {{pass}}</td>
+
+      <td>{{for x in ordem['valor']:}}
+      {{=x}}<br>
+      {{pass}}</td>
+  </tr>
+  <tr>
+    <td>Parcelas</td><td colspan="2">{{=ordem['quantidade']}}</td>
+  </tr>
+  <tr>
+      <td>Hora</td><td colspan="2">{{=ordem['timestamp']}}</td>
+  </tr>
 
   <tr>
-      <td>Item</td><td>{{=ordem['item']}}</td>
-  </tr>
-  <tr>
-      <td>Valor</td><td>{{=ordem['valor']}}</td>
-  </tr>
-  <tr>
-    <td>Parcelas</td><td>{{=ordem['quantidade']}}</td>
-  <tr>
-      <td>Hora</td><td>{{=ordem['timestamp']}}</td>
-  </tr>
-  <tr>
-  <tr>
-      <td>Imagem</td><td><img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/{{=ordem['figura']}}"></td>
+      <td>Imagem</td><td colspan="2">
+      {{for x in ordem['figura']:}}
+      <img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/{{=x}}">
+      {{pass}}</td>
   </tr>
   <tr>
       <td ><input id="aprovar" name="aprovar" class="btn btn-primary" type="submit" value="Aprovar" onclick=Aprovar(this);></td>
-      <td align="right"><input id="enviar" id="rejeitar" name="rejeitar" class="btn btn-primary" type="submit" value="Rejeitar" onclick=Rejeitar(this);></td>
+      <td colspan="2" align="right"><input id="enviar" id="rejeitar" name="rejeitar" class="btn btn-primary" type="submit" value="Rejeitar" onclick=Rejeitar(this);></td>
   </tr>
 
 </table>

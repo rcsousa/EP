@@ -1,0 +1,145 @@
+<meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">  
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+</head>
+
+<body>
+
+<div id="includednavbar"></div>
+    
+<div class="container-fluid">
+
+
+
+
+  <table class="table table-striped">
+
+<form class="form-horizontal" id="ajaxform" >
+
+    <tbody>
+        {{for x in produtos:}}
+        <tr>
+            <td >{{=x[1]}}<br><br>
+                <h3><span class="label label-warning">Preço: {{=x[3]}}</span></h3>
+                <br><br>
+                <div class="checkbox">
+                  <label><input  type="checkbox" id="checkbox" produto="{{=x[1]}}" preco="{{=x[3]}}" figura="{{=x[4]}}" id_produto="{{=x[0]}}">Selecionar</label>
+                </div>
+            </td>
+            <td align="center"><img style="max-width:500px;max-height:200px;" src="/easypay/default/produtos/download/{{=x[4]}}"></td>
+        </tr>
+        {{pass}}
+        <tr>
+            <td colspan="2"><input class="btn-primary btn" type="submit" value="Comprar"></td>
+        </tr>
+        
+    </tbody>
+    
+</form>
+  </table>
+
+</div>
+  <script src="http://www.rcsousa.com.br:8888/js/pushstream.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/easypay/static/js/links.js"></script>
+    <script type="text/javascript" language="javascript" charset="utf-8" >
+        $(function(){$("#includednavbar").load("navbar.html");});
+        newImg = document.createElement("img");
+
+        function abreimg(link){
+            window.open(link,'image','width=400,height=400'); 
+        }
+
+      function messageReceived(text, id, channel) {
+      obj_a = text.replace(/'/g, '"');
+      var lastChar = obj_a.substr(obj_a.length - 1);
+        if (lastChar == "}") {
+            obj_a = obj_a; }
+        else {
+            obj_a = obj_a+"}";
+        }
+      console.log(obj_a);
+      obj = JSON.parse(obj_a);
+      var image_name = obj.image_name;
+      window.location.assign("/easypay/default/tela_qrcode_off.html?txid="+image_name);
+
+
+    };
+
+    var canal = "caixa-1";
+    var pushstream = new PushStream({
+        host: "www.rcsousa.com.br",
+        port: 8443,
+        useSSL:true,
+      modes: "websocket"
+    });
+    pushstream.onmessage = messageReceived;
+    pushstream.addChannel(canal);
+    pushstream.connect();
+
+    $('.btn-primary').click(function() {
+        var el = document.querySelectorAll('input[type="checkbox"]:checked');
+        item=[], valor=[], figura=[], id_produto=[];
+        for (var x=0; x < el.length; x++) {
+            id_produto.push(el[x].getAttribute("id_produto"));
+            item.push(el[x].getAttribute("produto"));
+            valor.push(el[x].getAttribute("preco"));
+            figura.push(el[x].getAttribute("figura"));
+        }
+        //item = item[0];
+        //valor = valor[0];
+        //figura = figura[0];
+     });
+
+        
+    $("#ajaxform").submit(function(e)
+    {
+        //var item = $(this).attr("produto");
+        var quantidade = "1";
+        //var valor = $(this).attr("preco");
+        //var figura = $(this).attr("figura");
+        var postData  = {
+                        "ordem" :{ "item" : item, "quantidade" : quantidade, "valor" : valor, "figura": figura, "id_produto": id_produto},
+                        "canal" : "caixa-1" 
+                        };
+
+
+        //confirm(JSON.stringify(postData));
+        $( "form" )[ 0 ].reset();
+        $.ajax(
+            {
+                // beforeSend: function(xhr) {
+                //xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+                //}
+                url : "http://www.rcsousa.com.br:9191/qrcode",
+                type: "POST",
+                data : JSON.stringify(postData),
+                success:function(data, textStatus, jqXHR) 
+                    {
+                        alert("Aguarde confirmação do Cliente");
+                        //alert(sel.options[sel.selectedIndex].value);
+                        //alert(opcao);
+                    },
+                error: function(jqXHR, textStatus, errorThrown) 
+                    {
+                    }
+                
+                
+            });
+
+
+        e.preventDefault();	//STOP default action
+    });
+
+    </script>
+    
+</body>
+
+
+</html>

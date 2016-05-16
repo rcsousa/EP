@@ -25,6 +25,8 @@ def tela_vendedor():
     preco = []
     _id = []
     figura = []
+    total = []
+    subtotal = []
     for x in linhas:
         produto.append(x.produto)
         preco.append(x.preco)
@@ -32,10 +34,50 @@ def tela_vendedor():
         figura.append(x.figura)
     for doc in result['docs']:
         docs.append(doc)
-    return dict(docs=docs, produto=zip(_id, produto, preco,figura), user=auth.user)
+    for x in docs:
+        for y in x['valor']:
+            subtotal.append(float(y.replace(',','.')))
+        subtotal_sum = sum(subtotal)
+        total.append(subtotal_sum)
+        subtotal=[]
+    return dict(docs=zip(docs,total), total=sum(total), produto=zip(_id, produto, preco,figura), user=auth.user)
 
 @auth.requires_login()
 def lista_de_produtos():
+    import os
+    db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
+    linhas = db(db.produtos.id > 0).select()
+    produto = []
+    preco = []
+    _id = []
+    figura = []
+    descricao = []
+    for x in linhas:
+        produto.append(x.produto)
+        preco.append(x.preco)
+        _id.append(x.id)
+        figura.append(x.figura)
+        descricao.append(x.descricao)
+    return dict(produtos=zip(_id, produto, descricao, preco,figura), user=auth.user)
+
+@auth.requires_login()
+def lista_de_ordens():
+    import os
+    db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
+    linhas = db(db.ordens.id > 0).select(orderby=~db.ordens.id)
+    produtos = []
+    valor = []
+    _id = []
+    figura = []
+    for x in linhas:
+        produtos.append(x.produtos)
+        valor.append(x.valor)
+        _id.append(x.id)
+        figura.append(x.figura)
+    return dict(produtos=zip(_id, produtos, valor,figura), user=auth.user)
+
+@auth.requires_login()
+def lista_de_produtos_checkbox():
     import os
     db = DAL('sqlite://storage.sqlite',folder=os.getcwd()+'/applications/easypay/databases',auto_import=True)
     linhas = db(db.produtos.id > 0).select()
@@ -59,9 +101,17 @@ def tela_easypay():
     z = requests.post("https://rcsousa.cloudant.com/easypay/_find", data=selector)
     result = json.loads(z.text)
     docs = []
+    total = []
+    subtotal = []
     for doc in result['docs']:
         docs.append(doc)
-    return dict(docs=docs, user=auth.user)
+    for x in docs:
+        for y in x['valor']:
+            subtotal.append(float(y.replace(',','.')))
+        subtotal_sum = sum(subtotal)
+        total.append(subtotal_sum)
+        subtotal=[]
+    return dict(docs=zip(docs,total), total=sum(total), user=auth.user)
 
 @auth.requires_login()
 def tela_cliente():
@@ -73,6 +123,8 @@ def tela_cliente():
     client = Cloudant("rcsousa", "F@b1m3u@m0r", account="rcsousa")
     client.connect()
     db = client[cloudantDB]
+    total = []
+    subtotal = []
     doc = db[txid[0]]
     id = doc['_id']
     item = doc['item']
@@ -81,6 +133,10 @@ def tela_cliente():
     timestamp = doc['timestamp']
     figura = doc['figura']
     result = {"id": id, "item" : item, "quantidade" : quantidade, "valor" : valor, "timestamp" : timestamp, "figura" : figura}
+    for y in valor:
+        subtotal.append(float(y.replace(',','.')))
+    subtotal_sum = sum(subtotal)
+    total.append(subtotal_sum)
     return dict(ordem=result, user=auth.user)
 
 def tela_qrcode():

@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-capable" content="yes">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="apple-touch-icon" href="/easypay/static/images/logo_iphone.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -24,7 +24,7 @@
 <!-- Form Name -->
 
 <!-- Text input-->
-
+<!--
 <div class="form-group">
 <label class="col-md-4 control-label" for="quantidade">Produto</label>  
 <div class="col-md-4">
@@ -40,43 +40,49 @@
     </div>
     </div>
 
-    
-
-<!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="enviar"></label>
   <div class="col-md-4">
-<!--      
-    <button id="enviar" name="enviar" class="btn btn-primary" type="submit">Enviar</button>
--->
+
     <input id="enviar" name="enviar" class="btn btn-primary" type="submit" value="Enviar">
 </div>
 </div>
 
 </fieldset>
 </form>
-
+-->
 
   <table class="table table-striped">
 
     <tbody>
         {{for x in docs:}}
         <tr>
-            <td class="col-md-6">{{=x['item']}}
-            <br><br>
-            <h3><span class="label label-warning">Preço: {{=x['valor']}}</span></h3>
-            <br><h4><span class="label label-primary">{{=x['timestamp']}}</span></h4></td>
+            <td class="col-md-6">
+                {{for unit in x[0]['item']:}}
+                {{=unit}}<br>
+                {{pass}}
+                <br><br>
+                <h4><span class="label label-primary">{{=x[0]['timestamp']}}</span></h4></td>
+            </td>
+            <td>
+                {{for unit in x[0]['valor']:}}
+            Preço: {{=unit}}<br>
+                {{pass}}<hr>
+                
+                <h3><span class="label label-warning">Total do Pedido: {{=x[1]}}</span></h3></td>
+            </td>
             <td align="center">
-            {{if "Aprovado" in x['status_easypay']:}}
-            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px">
-            {{elif "Rejeitado" in x['status_easypay']:}}
-            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px">
+            {{if "Aprovado" in x[0]['status_easypay']:}}
+            <img id="{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/ok.png" style="width:40px;height:40px">
+            {{elif "Rejeitado" in x[0]['status_easypay']:}}
+            <img id="{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/rejeitar.png" style="width:40px;height:40px">
             {{else:}}
-            <img id="{{=x['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px">
+            <img id="{{=x[0]['_id']}}" class="img-rounded" src="/easypay/static/images/pending.png" style="width:40px;height:40px">
         {{pass}}
-            <br><br><button id="{{=x['image_name']}}" name="gerar_qrcode" class="btn btn-primary" type="submit" onclick=gera_qrcode(this.id);>Gerar Código</button></td>
+            <br><br><button id="{{=x[0]['image_name']}}" name="gerar_qrcode" class="btn btn-primary" type="submit" onclick=gera_qrcode(this.id);>Gerar Código</button></td>
         </tr>
         {{pass}}
+    <tr><td></td><td><h3><span class="label label-warning">Total: {{=total}}</span></h3></td><td></td></tr>
     </tbody>
   </table>
 
